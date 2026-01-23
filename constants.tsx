@@ -14,6 +14,28 @@ export const CONTENT: ModeContent = {
       { name: "Motion Design", level: 80, icon: "🎬" },
       { name: "Typography", level: 92, icon: "✒️" }
     ],
+    valueCards: [
+  {
+    id: "01",
+    title: "Creative Vision",
+    desc: "Crafting unique narratives through design."
+  },
+  {
+    id: "02",
+    title: "User-Centered",
+    desc: "Prioritizing human experience above all."
+  },
+  {
+    id: "03",
+    title: "Pixel Perfect",
+    desc: "Obsessing over the smallest details."
+  },
+  {
+    id: "04",
+    title: "Trend Aware",
+    desc: "Staying ahead of the digital curve."
+  }
+],
     projects: [
       {
         id: 1,
@@ -58,6 +80,7 @@ export const CONTENT: ModeContent = {
         tags: ["Industrial", "CAD"]
       }
     ]
+    
   },
   dev: {
     subheading: "I'm a developer",
@@ -70,6 +93,12 @@ export const CONTENT: ModeContent = {
       { name: "GraphQL", level: 80, icon: "🛰️" },
       { name: "Performance Optimization", level: 88, icon: "⚡" }
     ],
+     valueCards: [
+    { id: "01", title: "Creative Dev", desc: "Crafting unique narratives through design." },
+    { id: "02", title: "User-Centered", desc: "Prioritizing human experience above all." },
+    { id: "03", title: "Pixel Perfect", desc: "Obsessing over the smallest details." },
+    { id: "04", title: "Trend Aware", desc: "Staying ahead of the digital curve." }
+  ],
     projects: [
       {
         id: 4,
@@ -139,3 +168,4 @@ export const TOOLS = {
     { name: "Terminal", icon: "🐚" }
   ]
 };
+

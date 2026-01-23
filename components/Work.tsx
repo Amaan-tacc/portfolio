@@ -16,6 +16,22 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const autoPlayRef = useRef<number | null>(null);
+  const resumeTimeoutRef = useRef<number | null>(null);
+
+
+  const pauseAutoPlay = () => {
+  pauseAutoPlay();
+
+
+  if (resumeTimeoutRef.current) {
+    clearTimeout(resumeTimeoutRef.current);
+  }
+
+  resumeTimeoutRef.current = window.setTimeout(() => {
+    setIsAutoPlaying(true);
+  }, 2000);
+};
+
 
   const next = () => {
     setDirection(1);
@@ -36,34 +52,35 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
       clearInterval(autoPlayRef.current);
     }
     return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
+  if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+};
+
   }, [isAutoPlaying, projects.length]);
 
   const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 150 : -150,
-      opacity: 0,
-      scale: 0.95,
-      filter: 'blur(10px)',
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      filter: 'blur(0px)',
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 150 : -150,
-      opacity: 0,
-      scale: 0.95,
-      filter: 'blur(10px)',
-    }),
-  };
+  enter: (direction: number) => ({
+    x: direction > 0 ? 500 : -500,
+    opacity: 0,
+    scale: 0.98,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    zIndex: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -500 : 500,
+    opacity: 0,
+    scale: 0.98,
+    zIndex: 0,
+  }),
+};
 
-  const swipeConfidenceThreshold = 10000;
+
+  const swipeConfidenceThreshold = 6000;
+
   const swipePower = (offset: number, velocity: number) => {
     return Math.abs(offset) * velocity;
   };
@@ -88,7 +105,7 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
           <div className="flex items-center justify-between w-full md:w-auto space-x-4">
             <div className="flex space-x-2">
               <button 
-                onClick={() => { prev(); setIsAutoPlaying(false); }}
+                onClick={() => { prev(); pauseAutoPlay(); }}
                 className="p-3 sm:p-4 rounded-full glass border border-gray-200 dark:border-white/10 hover:bg-white/10 transition-colors"
                 aria-label="Previous project"
               >
@@ -97,7 +114,7 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
                 </svg>
               </button>
               <button 
-                onClick={() => { next(); setIsAutoPlaying(false); }}
+                onClick={() => { next(); pauseAutoPlay(); }}
                 className="p-3 sm:p-4 rounded-full glass border border-gray-200 dark:border-white/10 hover:bg-white/10 transition-colors"
                 aria-label="Next project"
               >
@@ -118,7 +135,8 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
         className="relative w-full max-w-7xl mx-auto overflow-visible"
       >
         <div className="relative min-h-[400px] sm:min-h-[600px] flex items-center justify-center">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+          <AnimatePresence initial={false} custom={direction} mode="sync">
+
             <motion.div
               key={`${mode}-${index}`}
               custom={direction}
@@ -127,14 +145,15 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: "spring", stiffness: 120, damping: 20 },
-                opacity: { duration: 0.4 },
-                scale: { duration: 0.4 },
-                filter: { duration: 0.4 }
-              }}
+  x: { type: "spring", stiffness: 260, damping: 30 },
+  opacity: { duration: 0.2 },
+  scale: { duration: 0.2 },
+}}
+
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
+              dragElastic={0.35}
+
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
                 if (swipe < -swipeConfidenceThreshold) {

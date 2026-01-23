@@ -10,13 +10,11 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ mode }) => {
   const content = CONTENT[mode];
+  const valueCards = CONTENT[mode]?.valueCards ?? [];
 
-  const valueCards = [
-    { id: "01", title: "Creative Vision", desc: "Crafting unique narratives through design." },
-    { id: "02", title: "User-Centered", desc: "Prioritizing human experience above all." },
-    { id: "03", title: "Pixel Perfect", desc: "Obsessing over the smallest details." },
-    { id: "04", title: "Trend Aware", desc: "Staying ahead of the digital curve." }
-  ];
+
+
+
 
   const stats = [
     { label: "Experience", value: "5+" },
@@ -55,9 +53,13 @@ const About: React.FC<AboutProps> = ({ mode }) => {
               whileHover={{ y: -5 }}
               className="glass p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-white/5 space-y-2 sm:space-y-4 group transition-all"
             >
-              <span className="text-2xl sm:text-4xl font-display font-black opacity-10 group-hover:opacity-30 transition-opacity">
-                {card.id}
-              </span>
+              <span
+  className={`text-2xl sm:text-4xl font-display font-black opacity-10 group-hover:opacity-30 transition-opacity
+    ${mode === 'design' ? 'group-hover:text-[#f7af33]' : 'group-hover:text-[#489bd4]'}`}
+>
+  {card.id}
+</span>
+
               <h4 className="text-base sm:text-xl font-bold font-display">{card.title}</h4>
               <p className="text-[12px] sm:text-sm opacity-60 leading-relaxed">{card.desc}</p>
             </motion.div>
