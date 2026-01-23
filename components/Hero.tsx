@@ -3,8 +3,8 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppMode } from '../types';
 import { CONTENT } from '../constants';
-import avatar1 from '../assets/avatar1.png'
-import avatar2 from '../assets/avatar2.png'
+import avatar1 from '../assets/avatar1.webp'
+import avatar2 from '../assets/avatar2.webp'
 
 interface HeroProps {
   mode: AppMode;
@@ -129,7 +129,8 @@ const Hero: React.FC<HeroProps> = ({ mode, isDarkMode, onToggleMode, themeColors
               </motion.button>
 
               <motion.div 
-                className="absolute -top-20 -right-24 sm:-right-32 hidden xl:block pointer-events-none"
+                className="absolute -right-24 sm:-right-25 hidden xl:block pointer-events-none"
+                style={{ top: '-3rem' }}
                 initial={{ opacity: 0, scale: 0.5, rotate: 10 }}
                 animate={{ opacity: 1, scale: 0.8, rotate: 0 }}
                 transition={{ delay: 1, duration: 0.8 }}
@@ -158,13 +159,18 @@ const Hero: React.FC<HeroProps> = ({ mode, isDarkMode, onToggleMode, themeColors
                   />
                 </motion.svg>
                 <motion.span 
-                  animate={{ scale: [1, 1.05, 1], y: [0, -2, 0] }}
-                  transition={{ repeat: Infinity, duration: 3 }}
-                  className="absolute -top-4 right-0 text-[9px] uppercase font-black tracking-widest px-3 py-1 glass rounded-full shadow-2xl border border-gray-100 dark:border-white/10"
-                  style={{ color: themeColors.secondary, backgroundColor: 'rgba(255,255,255,0.95)' }}
-                >
-                  Switch!
-                </motion.span>
+  animate={{ scale: [1.25, 1.15, 1.25], y: [0, -5, 0] }}
+  transition={{ repeat: Infinity, duration: 3 }}
+  className="absolute right-0 text-[9px] uppercase font-black tracking-widest px-3 py-1 glass rounded-full shadow-2xl border border-gray-100 dark:border-white/10"
+  style={{ 
+    top: '0rem',  // <-- arrow moved to top of parent
+    color: isDarkMode ? '#000000' : '#ffffff', 
+    backgroundColor: isDarkMode ? 'rgba(255,255,255,0.95)' : '#888888' 
+  }}
+>
+  Try it!
+</motion.span>
+
               </motion.div>
             </div>
           </div>

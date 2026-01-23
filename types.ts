@@ -15,12 +15,20 @@ export interface Skill {
   icon: string;
 }
 
+export interface Card {
+  id: string;
+  title: string;
+  desc: string;
+}
+
 export interface ContentData {
   subheading: string;
   description: string;
   skills: Skill[];
   projects: Project[];
+  valueCards: Card[];  // ✅ ADD THIS
 }
+
 
 export interface ModeContent {
   design: ContentData;

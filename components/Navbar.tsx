@@ -2,8 +2,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppMode } from '../types';
-import logo1 from '../assets/logo1.png'
-import logo2 from '../assets/logo2.png'
+import logo1 from '../assets/logo1.webp'
+import logo2 from '../assets/logo2.webp'
 
 interface NavbarProps {
   mode: AppMode;
