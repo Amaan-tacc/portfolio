@@ -20,16 +20,21 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
 
 
   const pauseAutoPlay = () => {
-  setIsAutoPlaying(false); // stop auto-play
+  // Stop auto-play
+  setIsAutoPlaying(false);
 
-  if (resumeTimeoutRef.current) {
-    clearTimeout(resumeTimeoutRef.current);
-  }
+  // Clear any existing resume timer
+  if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
 
+  // Resume auto-play after 2 seconds
   resumeTimeoutRef.current = window.setTimeout(() => {
-    setIsAutoPlaying(true); // resume auto-play after 2s
+    setIsAutoPlaying(true);
   }, 2000);
 };
+
+
+
+
 
 
 
@@ -44,19 +49,25 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
   };
 
   useEffect(() => {
-    if (isAutoPlaying) {
-      autoPlayRef.current = window.setInterval(() => {
-        next();
-      }, 6000);
-    } else if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-    }
-    return () => {
-  if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-  if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-};
+  if (!projects.length) return;
 
-  }, [isAutoPlaying, projects.length]);
+  let interval: number | undefined;
+
+  if (isAutoPlaying) {
+    interval = window.setInterval(() => {
+      setDirection(1);
+      setIndex((prev) => (prev + 1) % projects.length);
+    }, 6000);
+  }
+
+  return () => {
+    if (interval) clearInterval(interval);
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+  };
+}, [isAutoPlaying, projects.length]);
+
+
+
 
   const variants = {
   enter: (direction: number) => ({
@@ -90,12 +101,12 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
     <section id="work" className="py-12 sm:py-24 px-6 bg-gray-50 dark:bg-brand-dark/30 relative overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto relative z-10 mb-6 sm:mb-16">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-8"
-        >
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-8"
+>
+
           <div className="space-y-2 sm:space-y-4">
             <h3 className="text-[10px] sm:text-sm font-bold tracking-[0.4em] uppercase opacity-40">Portfolio</h3>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold leading-tight">
@@ -129,12 +140,12 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
       </div>
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1, ease: "circOut" }}
-        className="relative w-full max-w-7xl mx-auto overflow-visible"
-      >
+  initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1, ease: "circOut" }}
+  className="relative w-full max-w-7xl mx-auto overflow-visible"
+>
+
         <div className="relative min-h-[400px] sm:min-h-[600px] flex items-center justify-center">
           <AnimatePresence initial={false} custom={direction} mode="sync">
 
@@ -155,16 +166,20 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.35}
 
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-                if (swipe < -swipeConfidenceThreshold) {
-                  next();
-                  setIsAutoPlaying(false);
-                } else if (swipe > swipeConfidenceThreshold) {
-                  prev();
-                  setIsAutoPlaying(false);
-                }
-              }}
+             onDragEnd={(e, { offset, velocity }) => {
+  const swipe = swipePower(offset.x, velocity.x);
+  if (swipe < -swipeConfidenceThreshold) {
+    next();
+    pauseAutoPlay();
+  } else if (swipe > swipeConfidenceThreshold) {
+    prev();
+    pauseAutoPlay();
+  }
+}}
+
+
+
+
               className="absolute w-full max-w-5xl group cursor-grab active:cursor-grabbing px-4"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">

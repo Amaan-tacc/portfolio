@@ -168,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ mode, isDarkMode, onToggleMode, themeColors
     backgroundColor: isDarkMode ? 'rgba(255,255,255,0.95)' : '#888888' 
   }}
 >
-  Try
+  Try it!
 </motion.span>
 
               </motion.div>
