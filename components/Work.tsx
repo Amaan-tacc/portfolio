@@ -20,17 +20,17 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
 
 
   const pauseAutoPlay = () => {
-  pauseAutoPlay();
-
+  setIsAutoPlaying(false); // stop auto-play
 
   if (resumeTimeoutRef.current) {
     clearTimeout(resumeTimeoutRef.current);
   }
 
   resumeTimeoutRef.current = window.setTimeout(() => {
-    setIsAutoPlaying(true);
+    setIsAutoPlaying(true); // resume auto-play after 2s
   }, 2000);
 };
+
 
 
   const next = () => {
@@ -79,7 +79,8 @@ const Work: React.FC<WorkProps> = ({ mode, themeColors }) => {
 };
 
 
-  const swipeConfidenceThreshold = 6000;
+  const swipeConfidenceThreshold = 1500;
+
 
   const swipePower = (offset: number, velocity: number) => {
     return Math.abs(offset) * velocity;
