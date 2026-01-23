@@ -3,8 +3,8 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppMode } from '../types';
 import { CONTENT } from '../constants';
-import avatar1 from '../assets/avatar1.png'
-import avatar2 from '../assets/avatar2.png'
+import avatar1 from '../assets/avatar1.webp'
+import avatar2 from '../assets/avatar2.webp'
 
 interface HeroProps {
   mode: AppMode;
