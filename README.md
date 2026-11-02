@@ -1,3 +1,15 @@
+# Amaanity portfolio
+
+Live website: https://amaan-tacc.github.io/portfolio/
+
+The current complete site is in **[docs/](docs/)**. GitHub Pages publishes **main → /docs** automatically after a push. It is a static site and needs no API key, backend or build service to run.
+
+See [current portfolio guide](CURRENT_PORTFOLIO.md), [editing/build instructions](tools/portfolio/README.md), and [QA and optimization report](QA_AND_OPTIMIZATION.md).
+
+The earlier React app is preserved below for reference. Its setup instructions apply only to that older app.
+
+---
+
 <div align="center">
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
