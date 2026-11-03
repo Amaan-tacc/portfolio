@@ -5,7 +5,16 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {parseHTML} from 'linkedom';
+import * as cssTree from 'css-tree';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../docs');
+// Parse the actual stylesheets: malformed text before :root once disabled the entire light palette.
+for(const name of ['style.css','fonts.css']){
+ const source=fs.readFileSync(path.join(root,name),'utf8');
+ cssTree.parse(source,{onParseError(error){throw new Error(`${name}: ${error.message}`);}});
+}
+const styles=fs.readFileSync(path.join(root,'style.css'),'utf8');
+assert(styles.trimStart().startsWith(':root{'),'The light-mode palette must be the first valid rule.');
+assert(!/\.reveal:not\([^}]+opacity:\s*0/.test(styles),'Content must remain visible if a reveal observer is delayed.');
 const files=[];const walk=dir=>{for(const p of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,p.name);if(p.isDirectory())walk(file);else files.push(file);}};walk(root);
 let links=0,images=0;const canonicals=new Set(),titles=new Set();
 for(const file of files.filter(f=>f.endsWith('.html'))){

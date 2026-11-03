@@ -1,3 +1,5 @@
+Latest correction: [Theme and layout regression report — 4 November](QA_THEME_REGRESSION.md). This report documents a palette failure missed by the earlier layout checks and the additional computed-style verification.
+
 # Portfolio QA and optimization — 2 November 2026
 
 ## Changes
