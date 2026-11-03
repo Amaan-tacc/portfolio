@@ -23,3 +23,9 @@ Observed in the actual browser before the correction: `--bg` was empty, body tex
 - CSS parsing, source syntax and existing static validation passed for sixteen HTML documents and 946 local references.
 
 The browser results are retained locally in `outputs/QA_Theme_Regression_Results.json` and copied into `tools/portfolio/qa-theme-results.json` in this repository.
+
+## Resume hover follow-up
+
+The generic navbar anchor hover colour overrode the resume button's inverted text colour, producing matching text and background colours. The button is now excluded from ordinary nav underlines and uses a dedicated hover/focus treatment: unchanged readable text, a subtle panel background, amber border and downward icon movement.
+
+Verified with actual pointer hover: light mode uses text `rgb(67, 68, 69)` on `rgb(244, 244, 244)`; dark mode uses white text on `rgb(48, 49, 50)`. Both show an amber border and no generated underline. Keyboard focus remains visible, and the resume still downloads. Asset references are version 18.
