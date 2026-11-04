@@ -29,3 +29,10 @@ The browser results are retained locally in `outputs/QA_Theme_Regression_Results
 The generic navbar anchor hover colour overrode the resume button's inverted text colour, producing matching text and background colours. The button is now excluded from ordinary nav underlines and uses a dedicated hover/focus treatment: unchanged readable text, a subtle panel background, amber border and downward icon movement.
 
 Verified with actual pointer hover: light mode uses text `rgb(67, 68, 69)` on `rgb(244, 244, 244)`; dark mode uses white text on `rgb(48, 49, 50)`. Both show an amber border and no generated underline. Keyboard focus remains visible, and the resume still downloads. Asset references are version 18.
+
+
+## Selected Work hover previews (v19)
+
+The four homepage cards cycle only through their own cover and gallery images, with duplicate source paths removed. A 450 ms dwell starts the preview, followed by a new view every two seconds. Leaving the card restores its cover. Keyboard focus also previews; touch pointer entry does not start a slideshow. Offscreen browser tabs, page exit and the motion toggle cancel pending work; async image decoding cannot restore a stale preview after leaving. Additional images are created on demand, with responsive sources and decode before display. QuickGrade retains its browser mockup frame.
+
+Verified in the browser: real pointer hover advances WestVue through multiple views and leaving restores 01; keyboard focus previews De Fontein; QuickGrade loads the distinct upload view in its browser frame; light and dark presentation; Motion off leaves zero active preview layers. Static build and full existing integrity checks pass.

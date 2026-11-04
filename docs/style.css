@@ -117,3 +117,15 @@ body:has(dialog[open]) .mobile-bottom-nav{visibility:hidden}
 
 /* Resume downloads keep their label readable through hover and keyboard focus. */
 .nav-wrap nav>.nav-resume::after{content:none}.nav-wrap nav>.nav-resume{transition:background-color .18s,border-color .18s,box-shadow .18s}.nav-wrap nav>.nav-resume .inline-icon{transition:transform .18s}.nav-wrap nav>.nav-resume:is(:hover,:focus-visible) .inline-icon{transform:translateY(2px)}
+
+/* Hover previews share the same frame and dimensions as each project's cover. */
+.card-preview-layer{position:absolute;inset:0;opacity:0;pointer-events:none;z-index:1}
+.card-preview-layer.is-visible{opacity:1}
+.card-preview-stage{width:100%;height:100%;background:var(--panel)}
+.card-preview-stage>img{display:block;width:100%;height:100%;object-fit:cover}
+.project-image .card-preview-stage .card-device{height:100%}
+.preview-count{position:absolute;left:15px;bottom:15px;z-index:2;padding:6px 10px;border:1px solid var(--line);border-radius:100px;background:var(--surface);color:var(--ink);font-size:10px;font-variant-numeric:tabular-nums;pointer-events:none;opacity:0;transition:opacity .2s}
+.project-card:is(:hover,:focus-within) .preview-count{opacity:1}
+.project-image>.image-corner{z-index:2}
+@media(prefers-reduced-motion:reduce){.preview-count{display:none}}
+.motion-off .preview-count{display:none}

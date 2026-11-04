@@ -27,7 +27,7 @@ $('#footer').innerHTML=`<div class="footer-top"><a class="footer-name" href="/po
 const projectUrl=p=>'/portfolio/projects/'+encodeURIComponent(p.id)+'/';
 const image=(p,lazy=true)=>p.id==='digital-01'?browserFrame(p.image,'QuickGrade teacher dashboard','card-device'):imageMarkup(p.image,p.title+' — '+p.type,{kind:lazy?'card':'full',lazy,high:!lazy});
 const tags=p=>(p.tags||[]).map(t=>`<span>${({design:'Visual design',print:'Print & packaging',team:'Team delivery'})[t]}</span>`).join('');
-const card=(p,i=0)=>`<article class="project-card ${p.id==='digital-01'?'product-card':''}"><a class="project-image" href="${projectUrl(p)}">${image(p)}<span class="image-corner" aria-hidden="true">${arrow}</span></a><div class="project-caption"><div><div class="project-type">${esc(p.type)}</div><${route==='work'?'h2':'h3'}><a href="${projectUrl(p)}">${esc(p.title)}</a></${route==='work'?'h2':'h3'}><p>${esc(p.summary)}</p></div><span class="project-index">${String(i+1).padStart(2,'0')}</span></div><div class="project-tags">${tags(p)}</div></article>`;
+const card=(p,i=0)=>`<article data-project-id="${p.id}" class="project-card ${p.id==='digital-01'?'product-card':''}"><a class="project-image" href="${projectUrl(p)}">${image(p)}<span class="image-corner" aria-hidden="true">${arrow}</span></a><div class="project-caption"><div><div class="project-type">${esc(p.type)}</div><${route==='work'?'h2':'h3'}><a href="${projectUrl(p)}">${esc(p.title)}</a></${route==='work'?'h2':'h3'}><p>${esc(p.summary)}</p></div><span class="project-index">${String(i+1).padStart(2,'0')}</span></div><div class="project-tags">${tags(p)}</div></article>`;
 const sectionTitle=(k,t,extra='')=>`<div class="section-head"><div><div class="eyebrow">${k}</div><h2>${t}</h2></div>${extra}</div>`;
 const pageTitle=(k,t,text)=>`<section class="page-intro"><div class="eyebrow">${k}</div><h1>${t}</h1>${text?`<p>${esc(text)}</p>`:''}</section>`;
 const cta=()=>`<section class="closing"><div class="eyebrow">Projects & opportunities</div><div class="closing-row"><h2>Have a project<br>in mind?</h2><a class="circle-link" href="/portfolio/contact/" aria-label="Start a conversation">${arrow}</a></div><p>For freelance projects, creative lead roles and project coordination.</p></section>`;
@@ -67,7 +67,7 @@ const viewer=document.createElement('dialog');viewer.className='image-viewer';vi
 function showGallery(i){const list=window.currentGallery||[];if(!list.length)return;galleryIndex=(i+list.length)%list.length;const g=list[galleryIndex];animateIn(viewer.querySelector('img'));viewer.querySelector('img').src=g.src;viewer.querySelector('img').alt=g.caption;viewer.querySelector('.viewer-caption').textContent=g.caption;viewer.querySelector('.viewer-counter').textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-gallery-index]');if(!b)return;galleryTrigger=b;showGallery(Number(b.dataset.galleryIndex));viewer.showModal();document.body.classList.add('modal-open');});viewer.querySelector('.viewer-close').onclick=()=>closeAnimated(viewer);viewer.querySelector('.viewer-prev').onclick=()=>showGallery(galleryIndex-1);viewer.querySelector('.viewer-next').onclick=()=>showGallery(galleryIndex+1);viewer.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();showGallery(galleryIndex+(e.key==='ArrowRight'?1:-1));}});viewer.addEventListener('click',e=>{if(e.target===viewer)closeAnimated(viewer);});viewer.addEventListener('close',()=>{document.body.classList.remove('modal-open');galleryTrigger?.focus();});
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');let motionOn=!reducedMotion.matches;try{motionOn=!reducedMotion.matches&&localStorage.getItem('amaanity-motion')!=='off';}catch{}const motionButton=$('.motion-switch');
-function setMotion(on){on=on&&!reducedMotion.matches;motionOn=on;motionButton.disabled=reducedMotion.matches;motionButton.title=reducedMotion.matches?'Reduced motion follows your device setting':'Toggle interface animation';document.body.classList.toggle('motion-off',!on);motionButton.textContent=on?'Motion on':'Motion off';motionButton.setAttribute('aria-pressed',on);}
+function setMotion(on){on=on&&!reducedMotion.matches;motionOn=on;motionButton.disabled=reducedMotion.matches;motionButton.title=reducedMotion.matches?'Reduced motion follows your device setting':'Toggle interface animation';document.body.classList.toggle('motion-off',!on);motionButton.textContent=on?'Motion on':'Motion off';motionButton.setAttribute('aria-pressed',on);document.dispatchEvent(new Event('portfolio-motion-change'));}
 setMotion(motionOn);motionButton.onclick=()=>{setMotion(!motionOn);try{localStorage.setItem('amaanity-motion',motionOn?'on':'off');}catch{}};const followMotion=()=>{let enabled=true;try{enabled=localStorage.getItem('amaanity-motion')!=='off';}catch{}setMotion(enabled);};if(reducedMotion.addEventListener)reducedMotion.addEventListener('change',followMotion);else reducedMotion.addListener(followMotion);
 // Reading progress stays tied to the reader rather than decorative scroll movement.
 const progress=document.createElement('div');progress.className='reading-progress';progress.setAttribute('aria-hidden','true');document.body.prepend(progress);let scheduled=false;
@@ -110,3 +110,39 @@ if(route==='about'){const note=document.createElement('div');note.className='pra
 
 
 if(route==='project'){const id=pathParts[0]==='projects'?pathParts[1]:qs.get('id');const project=C.projects.find(p=>p.id===(id==='chantal-01'?'bluoom-01':id));if(project){const canonical='https://amaan-tacc.github.io'+projectUrl(project);const link=$('link[rel="canonical"]');if(link)link.href=canonical;const description=$('meta[name="description"]');if(description)description.content=project.summary;if(pathParts[0]!=='projects')document.title=project.title+' — Amaanity';}}
+
+// Home-page previews load only when requested; the project link stays a normal link.
+if(route==='home')document.querySelectorAll('.featured-grid .project-card').forEach(card=>{
+ const project=C.projects.find(p=>p.id===card.dataset.projectId);
+ const views=[project.image,...project.gallery.map(g=>g.src)].filter((src,i,list)=>list.indexOf(src)===i);
+ if(views.length<2)return;
+ const link=card.querySelector('.project-image');
+ const counter=document.createElement('span');counter.className='preview-count';counter.setAttribute('aria-hidden','true');counter.textContent='01 / '+String(views.length).padStart(2,'0');link.append(counter);
+ const layer=document.createElement('div');layer.className='card-preview-layer';layer.setAttribute('aria-hidden','true');link.insertBefore(layer,link.firstChild);
+ let index=0,timer=null,generation=0,hovered=false,focused=false;
+ const allowed=()=>motionOn&&!document.hidden&&(hovered||focused);
+ const reset=()=>{generation++;clearTimeout(timer);timer=null;index=0;layer.classList.remove('is-visible');counter.textContent='01 / '+String(views.length).padStart(2,'0');};
+ const schedule=delay=>{clearTimeout(timer);timer=setTimeout(advance,delay);};
+ async function advance(){
+  if(!allowed()){reset();return;}
+  const token=++generation;index=(index+1)%views.length;
+  const stage=document.createElement('div');stage.className='card-preview-stage';
+  stage.innerHTML=project.id==='digital-01'?browserFrame(views[index],'','card-device'):imageMarkup(views[index],'',{kind:'card',lazy:false});
+  const images=[...stage.querySelectorAll('img')];
+  images.forEach(img=>{img.loading='eager';});
+  try{await Promise.all(images.map(img=>img.decode()));}catch{if(token===generation&&allowed())schedule(1800);return;}
+  if(token!==generation||!allowed())return;
+  layer.replaceChildren(stage);layer.classList.add('is-visible');
+  counter.textContent=String(index+1).padStart(2,'0')+' / '+String(views.length).padStart(2,'0');
+  stage.animate([{opacity:0},{opacity:1}],{duration:280,easing:'ease-out'});
+  schedule(2000);
+ }
+ const start=()=>{if(allowed()&&timer===null)schedule(450);};
+ card.addEventListener('pointerenter',e=>{if(e.pointerType==='touch')return;hovered=true;start();});
+ card.addEventListener('pointerleave',()=>{hovered=false;if(!focused)reset();});
+ card.addEventListener('focusin',()=>{focused=true;start();});
+ card.addEventListener('focusout',e=>{if(!card.contains(e.relatedTarget)){focused=false;if(!hovered)reset();}});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)reset();else start();});
+ document.addEventListener('portfolio-motion-change',()=>{reset();start();});
+ window.addEventListener('pagehide',reset);
+});
