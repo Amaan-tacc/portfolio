@@ -37,8 +37,8 @@ for(const file of files.filter(f=>f.endsWith('.html'))){
   if(el.tagName==='IMG'){assert(el.hasAttribute('alt'),file);images++;}
  }
 }
-const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');assert.equal(hash(path.join(root,'assets/resumes/Amaans-Resume.pdf')),hash(path.join(root,'assets/resumes/Muhammad_Amaan_Project_Coordinator_Resume.pdf')));
+const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');assert.equal(hash(path.join(root,'assets/resumes/Amaans-Resume.pdf')),'b35c346ed6a8c72aa9308a9b6e05fd5fb2e5043603d1fffac0c7d7613079f0cc');
 const script=fs.readFileSync(path.join(root,'app.js'),'utf8');assert(!script.includes('resumeDialog'));new vm.Script(script);new vm.Script(fs.readFileSync(path.join(root,'image-assets.js'),'utf8'));new vm.Script(fs.readFileSync(path.join(root,'content.js'),'utf8'));
 const boot=fs.readFileSync(path.join(root,'index.html'),'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
 for(const [saved,device,expected,blocked] of [[null,true,true,false],[null,false,false,false],['light',true,false,false],['dark',false,true,false],['invalid',true,true,false],[null,true,true,true]]){let actual;const context={document:{documentElement:{classList:{toggle(k,v){actual=v;}}},querySelector(){return {}; }},localStorage:{getItem(){if(blocked)throw Error('blocked');return saved;}},window:{matchMedia:()=>({matches:device})}};vm.runInNewContext(boot,context);assert.equal(actual,expected);}
-console.log(JSON.stringify({html_pages:canonicals.size,checked_local_references:links,image_elements:images,theme_bootstrap_cases:6,resume:'byte-identical to supplied Project Coordinator PDF',result:'passed'}));
+console.log(JSON.stringify({html_pages:canonicals.size,checked_local_references:links,image_elements:images,theme_bootstrap_cases:6,resume:'matches updated user-supplied PDF (15 November 2026)',result:'passed'}));
