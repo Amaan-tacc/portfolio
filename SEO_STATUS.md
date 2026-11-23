@@ -38,6 +38,12 @@ The @amaanity YouTube channel appeared in Google's list of channels owned by the
 
 Version 24 adds visible Instagram Reels and YouTube links to the contact page and uses canonical profile URLs in Person / Organization sameAs data. The website retains the requested Instagram Reels destination for visitors.
 
+Instagram verification was subsequently completed after the owner approved basic-profile account linking and signed in through Instagram. Google confirmed **Property added successfully** for @amaanity._, and the property selector showed the website, Instagram and YouTube properties together. Both platform properties are collecting search-performance data; reports can take up to 48 hours. This is a reporting connection, not a promise that every social post is indexed. LinkedIn remains a saved Business Profile link and founder sameAs reference.
+
+At the owner's explicit request, the actual 400×400 LinkedIn profile portrait was downloaded from the visible profile-photo dialog and uploaded through Google's Add logo/profile-image flow without altering the image. The original full-square crop was saved and Google reported **Upload complete**. Public display and final photo selection remain subject to Google's processing; the overall profile was still unverified/not publicly visible. No credentials or account-linking tokens are stored in this repository.
+
+Version-24 contact HTML and runtime assets were confirmed byte-for-byte against the live Hostinger files. Instagram Reels and YouTube destinations were checked in the rendered live page, with no observed console errors. Source changes and this status record are pushed to GitHub.
+
 The initial Google URL Inspection report showed the homepage was unknown to Google. Sitemap submission starts discovery; Google determines crawling, inclusion and ranking. A submitted URL is not a guarantee of indexing or search position. Search Console performance and indexing reports initially display “Processing data”.
 
 Keep the studio name and domain consistent on genuine business profiles. Add real game-art projects when cleared for publication, and seek relevant client credits or editorial mentions when earned. No fake reviews, client outcomes, addresses or low-quality backlinks were created. Google Business Profile, paid SEO tools, tracking scripts, paid directories and advertising have not been configured.
