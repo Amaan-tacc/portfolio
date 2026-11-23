@@ -20,15 +20,17 @@ let links=0,images=0;const canonicals=new Set(),titles=new Set();
 for(const file of files.filter(f=>f.endsWith('.html'))){
  const {document}=parseHTML(fs.readFileSync(file,'utf8'));assert.equal(document.querySelectorAll('h1').length,1,file);
  const canonical=document.querySelector('link[rel=canonical]').getAttribute('href');assert(!canonicals.has(canonical),`duplicate canonical ${canonical}`);canonicals.add(canonical);
+ assert(canonical.startsWith('https://amaanity.com/'),'The custom domain is the primary canonical');
  const title=document.querySelector('title').textContent;assert(!titles.has(title),`duplicate title ${title}`);titles.add(title);
  assert(document.querySelector('meta[name=description]').getAttribute('content').length>40);
  assert(document.querySelector('main').textContent.length>40,`missing prerendered content ${file}`);
- for(const json of document.querySelectorAll('script[type="application/ld+json"]'))JSON.parse(json.textContent);
+ for(const json of document.querySelectorAll('script[type="application/ld+json"]')){const data=JSON.parse(json.textContent);assert(data['@graph'].some(n=>n['@type']==='Organization'&&n.email==='amaan@amaanity.com'));if(/\/services\/.+\/$/.test(canonical))assert(data['@graph'].some(n=>n['@type']==='Service'&&n.provider['@id']==='https://amaanity.com/#studio'));}
  const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);assert.equal(new Set(ids).size,ids.length,`duplicate IDs ${file}`);
  const resume=[...document.querySelectorAll('a[download]')];assert.equal(resume.length,canonical.endsWith('/about/')?1:0,'Resume belongs only on About');if(resume.length)assert.equal(new Set(resume.map(a=>a.getAttribute('href'))).size,1);assert(resume.every(a=>a.getAttribute('download')==="Amaan's Resume.pdf"&&a.textContent.trim()==="Amaan's Resume"));
  for(const el of document.querySelectorAll('[src],[href],[srcset],meta[property="og:image"]')){
   const urls=[el.getAttribute('src'),el.getAttribute('href'),el.getAttribute('content'),...(el.getAttribute('srcset')||'').split(',').map(v=>v.trim().split(' ')[0])].filter(Boolean);
   for(let url of urls){
+   if(url.startsWith('https://amaanity.com/'))url='/portfolio/'+url.slice('https://amaanity.com/'.length);
    if(url.startsWith('https://amaan-tacc.github.io/portfolio/'))url=url.slice('https://amaan-tacc.github.io'.length);
    if(!url.startsWith('/portfolio/'))continue;
    url=url.slice('/portfolio/'.length).split(/[?#]/)[0];let target=path.join(root,decodeURIComponent(url));if(!path.extname(target))target=path.join(target,'index.html');

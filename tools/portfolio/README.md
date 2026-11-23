@@ -1,6 +1,6 @@
 # Portfolio publishing tools
 
-The live site is committed in `docs/` and is served by GitHub Pages from `main:/docs`. Visitors need no build tools or external APIs.
+The current site is committed in `docs/`. Production runs on Hostinger at https://amaanity.com/; GitHub Pages serves a mirror from `main:/docs`. Visitors need no build tools or external APIs. All canonical URLs identify the custom domain.
 
 After editing `docs/app.js`, `docs/content.js` or other page templates, regenerate the complete HTML and sitemap:
 
@@ -18,4 +18,4 @@ Self-hosted font files and their licences live in `docs/assets/fonts/`; `docs/fo
 
 The only linked resume is `docs/assets/resumes/Amaans-Resume.pdf`, copied byte-for-byte from the supplied Project Coordinator CV. Its download filename is `Amaan's Resume.pdf`.
 
-`docs/sitemap.xml` lists the fourteen canonical pages. Submit that URL through the owner's Google Search Console account if desired. GitHub project Pages cannot set the host-level `/robots.txt`; the included project-local file documents the sitemap but does not control crawler access for the whole `github.io` host.
+`docs/sitemap.xml` lists twenty canonical pages: four core pages, a services hub, five service pages and ten project pages. The root-domain package exposes https://amaanity.com/sitemap.xml and robots.txt. The legacy query-based project route and 404 are excluded and marked noindex. GitHub project Pages cannot set its host-level robots.txt.

@@ -1,8 +1,10 @@
 # Amaanity portfolio
 
-Live website: https://amaanity.com/ (Hostinger)
+Live website: **[amaanity.com](https://amaanity.com/)** (Hostinger)
 
-GitHub Pages mirror: https://amaan-tacc.github.io/portfolio/
+Amaanity is an independent design studio for brand identity, books and educational design, print design, game art and illustration. [Explore our services](https://amaanity.com/services/) or [discuss a project](https://amaanity.com/contact/).
+
+GitHub Pages mirror: https://amaan-tacc.github.io/portfolio/ — canonical tags point to the primary amaanity.com domain.
 
 The current complete site is in **[docs/](docs/)**. GitHub Pages publishes **main → /docs** automatically after a push. It is a static site and needs no API key, backend or build service to run.
 

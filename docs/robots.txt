@@ -1,3 +1,3 @@
 User-agent: *
-Allow: /portfolio/
-Sitemap: https://amaan-tacc.github.io/portfolio/sitemap.xml
+Allow: /
+Sitemap: https://amaanity.com/sitemap.xml

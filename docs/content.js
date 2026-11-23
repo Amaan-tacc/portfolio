@@ -6,8 +6,8 @@ window.PORTFOLIO = {
     "action."
   ],
   "tagline": "Design & creative direction",
-  "intro": "I’m Amaan. I bring design, people and project details together to turn a brief into work that’s ready to deliver.",
-  "about": "I’m Muhammad Amaan, the person behind Amaanity. My work spans brand identities, educational publishing, print communication and digital project coordination. Sometimes I’m the designer. Sometimes I’m the link between the client, the designers and the developers. In both roles, I stay close to the brief, the feedback and the final detail.",
+  "intro": "Amaanity is an independent design studio for brands, publishers and creative teams. We bring the right designers together and take your project from brief to final files.",
+  "about": "I’m Muhammad Amaan, founder and creative lead at Amaanity. I work directly with clients and lead a team of designers across branding, books, educational materials, print, game art and illustration. I stay involved in the brief, creative direction, reviews and delivery, so you have one person keeping the work connected.",
   "email": "amaan@amaanity.com",
   "linkedin": "https://www.linkedin.com/in/muhammad-amaan-79bb28204/",
   "resume": "",
@@ -708,6 +708,97 @@ window.PORTFOLIO = {
     {
       "id": "team",
       "title": "Teamwork & delivery"
+    }
+  ],
+  "github": "https://github.com/Amaan-tacc",
+  "services": [
+    {
+      "id": "brand-identity",
+      "title": "Brand Identity",
+      "description": "Logo design, visual identity systems, brand guidelines and packaging for a consistent presence across every touchpoint.",
+      "intro": "A visual identity your business can use consistently, from its first impression to its everyday materials.",
+      "deliverables": [
+        "Logo design and logo variations",
+        "Colour, typography and visual systems",
+        "Brand guidelines and practical applications",
+        "Packaging and label design"
+      ],
+      "process": "We start with your audience, positioning and existing materials. We develop a visual direction, refine it with your feedback and deliver organised files and guidelines for your team.",
+      "brief": "Tell us what your business does, who it serves, what needs to change and where the identity will be used.",
+      "projects": [
+        "brand-01",
+        "enno-01",
+        "pack-01",
+        "social-01",
+        "bluoom-01"
+      ]
+    },
+    {
+      "id": "books-educational-design",
+      "title": "Books & Educational Design",
+      "description": "Book covers, interior layout, typesetting, illustrations and learning materials, with proofreading and print-ready delivery.",
+      "intro": "Books and learning materials designed to be clear, consistent and ready for production.",
+      "deliverables": [
+        "Book covers and interior layout",
+        "Typesetting and page systems",
+        "Original illustrations and educational graphics",
+        "Proofreading, print-ready PDFs and printer coordination"
+      ],
+      "process": "We review the manuscript, audience and format before setting the page direction. Our team builds the layouts, works through reviews and checks the final files against the agreed production requirements.",
+      "brief": "Share a manuscript or sample pages, the intended readers, page count, language, trim size and delivery date.",
+      "projects": [
+        "lead-01"
+      ]
+    },
+    {
+      "id": "print-design",
+      "title": "Print Design",
+      "description": "Brochures, posters, banners, menus and stationery designed as a coordinated set, with print-ready artwork and printer coordination.",
+      "intro": "Printed materials that communicate clearly and work together across formats.",
+      "deliverables": [
+        "Brochures, booklets and menus",
+        "Posters, banners and standees",
+        "Stationery and branded print materials",
+        "Print-ready artwork and printer coordination"
+      ],
+      "process": "We plan the hierarchy around your message and viewing distance, adapt the design to the required formats and check sizes, bleed and export settings with your printer’s specifications.",
+      "brief": "Send your copy, brand assets, required sizes, quantities, printer specifications and deadline.",
+      "projects": [
+        "print-01",
+        "menu-01",
+        "lead-01",
+        "technical-01"
+      ]
+    },
+    {
+      "id": "game-art-assets",
+      "title": "Game Art & Assets",
+      "description": "2D and 3D game art, character design, complete character models, environments and props for game teams.",
+      "intro": "Art support for game teams, from visual development to characters and environments.",
+      "deliverables": [
+        "2D art and visual development",
+        "Character design and complete 3D models",
+        "Environment art and props",
+        "Game UI, icons and animation, scoped to your project"
+      ],
+      "process": "Our game artists bring experience from mobile game companies. We agree the style, asset list and technical requirements with your team, review the work in stages and prepare the agreed formats for handoff.",
+      "brief": "Share the game concept, style references, engine, target platform and asset list. Include polygon budgets, texture sizes, rigging or animation requirements where relevant.",
+      "projects": []
+    },
+    {
+      "id": "illustration",
+      "title": "Illustration",
+      "description": "Original illustrations for books, educational materials, brands and games, developed around the audience and use.",
+      "intro": "Original artwork shaped around your story, audience and format.",
+      "deliverables": [
+        "Book and educational illustrations",
+        "Characters and narrative artwork",
+        "Brand and campaign illustrations",
+        "Artwork adapted to digital and print formats"
+      ],
+      "process": "We agree a style using your references and intended use, develop sketches for feedback and refine approved artwork into final files. The scope includes the number of pieces, revisions and required formats.",
+      "brief": "Tell us what the artwork needs to explain or express. Share style references, the number of illustrations, sizes and intended uses.",
+      "projects": []
     }
   ]
 };
