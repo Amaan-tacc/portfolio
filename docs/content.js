@@ -711,6 +711,8 @@ window.PORTFOLIO = {
     }
   ],
   "github": "https://github.com/Amaan-tacc",
+  "instagram": "https://www.instagram.com/amaanity._/",
+  "youtube": "https://www.youtube.com/@amaanity",
   "businessContact": {
     "phone": "+923258082369",
     "phoneDisplay": "+92 325 8082369",
