@@ -20,6 +20,12 @@ The build and integrity check passed for 22 HTML documents, 1,237 local referenc
 
 ## Search expectations and next steps
 
+### Business and contact update
+
+The owner confirmed that Amaanity operates entirely online, based in Lahore, Pakistan. Public phone / SMS / WhatsApp: +92 325 8082369. Contact availability: every day, 12:00–21:00 PKT (UTC+5). The contact page and footer expose the confirmed information, with telephone, SMS and WhatsApp links. Organization structured data includes the phone, city/country, a project-enquiry ContactPoint and all seven days of contact availability with the +05:00 offset. WebSite alternateName is the domain; the homepage and Contact page identify the studio as their main entity. An OfferCatalog links the five service pages.
+
+No Google Business Profile was created: Google's published eligibility rules exclude online-only businesses. The owner’s request for a profile cannot be fulfilled accurately using a false storefront or service area. Organization structured data can help Google understand the business but does not guarantee a knowledge panel, AI answer or rankings. See [Google Business Profile eligibility](https://support.google.com/business/answer/7039811) and [Organization structured data](https://developers.google.com/search/docs/appearance/structured-data/organization).
+
 The initial Google URL Inspection report showed the homepage was unknown to Google. Sitemap submission starts discovery; Google determines crawling, inclusion and ranking. A submitted URL is not a guarantee of indexing or search position. Search Console performance and indexing reports initially display “Processing data”.
 
 Keep the studio name and domain consistent on genuine business profiles. Add real game-art projects when cleared for publication, and seek relevant client credits or editorial mentions when earned. No fake reviews, client outcomes, addresses or low-quality backlinks were created. Google Business Profile, paid SEO tools, tracking scripts, paid directories and advertising have not been configured.

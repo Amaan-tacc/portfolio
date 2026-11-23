@@ -711,6 +711,17 @@ window.PORTFOLIO = {
     }
   ],
   "github": "https://github.com/Amaan-tacc",
+  "businessContact": {
+    "phone": "+923258082369",
+    "phoneDisplay": "+92 325 8082369",
+    "whatsapp": "https://wa.me/923258082369",
+    "city": "Lahore",
+    "country": "Pakistan",
+    "hours": "Every day, 12–9 pm PKT (UTC+5)",
+    "opens": "12:00:00+05:00",
+    "closes": "21:00:00+05:00",
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  },
   "services": [
     {
       "id": "brand-identity",

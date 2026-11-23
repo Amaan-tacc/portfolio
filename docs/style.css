@@ -132,3 +132,4 @@ body:has(dialog[open]) .mobile-bottom-nav{visibility:hidden}
 .motion-off .preview-count{display:none}
 
 .nav-project>svg{width:15px;height:15px;flex:none;transition:transform .18s}.nav-wrap nav>.nav-project:is(:hover,:focus-visible)>svg{transform:translateX(2px)}
+.business-contact-details{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;padding-top:32px;border-top:1px solid var(--line)}.business-contact-details h2{font-size:clamp(1.35rem,2.5vw,1.75rem);margin-bottom:16px}.business-contact-details>div>a{font-size:1.35rem;display:inline-block}.business-contact-details>div>a:hover{color:var(--highlight)}.business-contact-details p{font-size:1rem;margin-bottom:8px}.business-contact-actions{display:flex;flex-wrap:wrap;gap:26px;margin-top:18px}@media(max-width:700px){.business-contact-details{grid-template-columns:1fr;gap:34px}}
