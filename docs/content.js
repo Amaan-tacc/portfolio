@@ -8,7 +8,7 @@ window.PORTFOLIO = {
   "tagline": "Design & creative direction",
   "intro": "I’m Amaan. I bring design, people and project details together to turn a brief into work that’s ready to deliver.",
   "about": "I’m Muhammad Amaan, the person behind Amaanity. My work spans brand identities, educational publishing, print communication and digital project coordination. Sometimes I’m the designer. Sometimes I’m the link between the client, the designers and the developers. In both roles, I stay close to the brief, the feedback and the final detail.",
-  "email": "amaanityofficial@gmail.com",
+  "email": "amaan@amaanity.com",
   "linkedin": "https://www.linkedin.com/in/muhammad-amaan-79bb28204/",
   "resume": "",
   "home": {

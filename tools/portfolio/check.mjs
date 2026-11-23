@@ -25,7 +25,7 @@ for(const file of files.filter(f=>f.endsWith('.html'))){
  assert(document.querySelector('main').textContent.length>40,`missing prerendered content ${file}`);
  for(const json of document.querySelectorAll('script[type="application/ld+json"]'))JSON.parse(json.textContent);
  const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);assert.equal(new Set(ids).size,ids.length,`duplicate IDs ${file}`);
- const resume=[...document.querySelectorAll('a[download]')];assert(resume.length>0);assert.equal(new Set(resume.map(a=>a.getAttribute('href'))).size,1);assert(resume.every(a=>a.getAttribute('download')==="Amaan's Resume.pdf"&&a.textContent.trim()==="Amaan's Resume"));
+ const resume=[...document.querySelectorAll('a[download]')];assert.equal(resume.length,canonical.endsWith('/about/')?1:0,'Resume belongs only on About');if(resume.length)assert.equal(new Set(resume.map(a=>a.getAttribute('href'))).size,1);assert(resume.every(a=>a.getAttribute('download')==="Amaan's Resume.pdf"&&a.textContent.trim()==="Amaan's Resume"));
  for(const el of document.querySelectorAll('[src],[href],[srcset],meta[property="og:image"]')){
   const urls=[el.getAttribute('src'),el.getAttribute('href'),el.getAttribute('content'),...(el.getAttribute('srcset')||'').split(',').map(v=>v.trim().split(' ')[0])].filter(Boolean);
   for(let url of urls){
