@@ -1,8 +1,12 @@
 # Amaanity portfolio
 
-Live website: https://amaan-tacc.github.io/portfolio/
+Live website: https://amaanity.com/ (Hostinger)
+
+GitHub Pages mirror: https://amaan-tacc.github.io/portfolio/
 
 The current complete site is in **[docs/](docs/)**. GitHub Pages publishes **main → /docs** automatically after a push. It is a static site and needs no API key, backend or build service to run.
+
+For Hostinger, run `python tools/portfolio/build_hostinger.py --output <new-output-folder>` after rebuilding `docs/`. The script makes a separate root-domain package with amaanity.com canonical URLs, local asset paths, HTTPS/www redirects and a custom 404. Extract the ZIP contents into Hostinger’s `domains/amaanity.com/public_html`, preserving a backup of the existing `.htaccess`. GitHub pushes update the Pages mirror; Hostinger currently requires uploading the new package.
 
 See [current portfolio guide](CURRENT_PORTFOLIO.md), [editing/build instructions](tools/portfolio/README.md), and [QA and optimization report](QA_AND_OPTIMIZATION.md).
 
