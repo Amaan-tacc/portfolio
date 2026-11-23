@@ -1,0 +1,27 @@
+# Amaanity search setup — 23 November 2026
+
+Production: https://amaanity.com/ on Hostinger. Source: https://github.com/Amaan-tacc/portfolio (main, docs/). The GitHub Pages mirror remains available; its canonical tags identify the custom domain. Git pushes publish the Pages mirror, while Hostinger currently uses the validated root-domain ZIP upload process documented in README.md. No automatic Hostinger deployment connection has been configured.
+
+## Implemented
+
+- A services hub and five substantive service pages: brand identity, books and educational design, print design, game art and assets, and illustration. Pages describe scope, process and briefing requirements; existing relevant projects are linked without inventing game-art examples.
+- Updated homepage, About and Contact copy for the confirmed studio positioning and amaan@amaanity.com enquiries.
+- Unique page titles and descriptions, primary-domain canonicals, Open Graph and Twitter cards, Organization / founder / WebSite / Service / CreativeWork structured data and breadcrumbs.
+- Complete prerendered HTML, crawlable internal links, a twenty-page XML sitemap and root robots.txt. Legacy query-based project shell and 404 are excluded from the sitemap and marked noindex.
+- Existing responsive WebP images, self-hosted fonts with swap, lazy loading, deferred scripts, device theme preference, reduced-motion controls and cache-versioned assets retained. Live Hostinger responses confirmed gzip compression; CDN is enabled.
+- GitHub profile website, repository About website and README link to amaanity.com. The website footer links back to the GitHub profile. These are relevant owned links, not purchased links or automated directory submissions.
+- Domain ownership verified in Google Search Console through a DNS TXT record. Keep that verification record in DNS.
+- Sitemap submitted in Search Console: **Success, 20 discovered pages**. This means discovery, not that all pages are indexed.
+- Homepage indexing requested successfully. Google confirmed that the URL was added to a priority crawl queue. No further manual request is needed for the same URL now.
+
+## Validation
+
+The build and integrity check passed for 22 HTML documents, 1,237 local references, 203 image elements and six theme bootstrap cases. The supplied resume hash is unchanged. Browser checks covered the service hub in dark mode, a detail page in both themes, a 390px mobile layout and 701px/768px navigation. No live service-page console errors were observed. All twenty live canonical pages returned HTTP 200, and the deployed core files matched the root-domain package (scripts checked using their v=22 URLs).
+
+## Search expectations and next steps
+
+The initial Google URL Inspection report showed the homepage was unknown to Google. Sitemap submission starts discovery; Google determines crawling, inclusion and ranking. A submitted URL is not a guarantee of indexing or search position. Search Console performance and indexing reports initially display “Processing data”.
+
+Keep the studio name and domain consistent on genuine business profiles. Add real game-art projects when cleared for publication, and seek relevant client credits or editorial mentions when earned. No fake reviews, client outcomes, addresses or low-quality backlinks were created. Google Business Profile, paid SEO tools, tracking scripts, paid directories and advertising have not been configured.
+
+Google references: [Request recrawling](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl), [Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Search Essentials](https://developers.google.com/search/docs/essentials), [Link spam policy](https://developers.google.com/search/docs/essentials/spam-policies).
