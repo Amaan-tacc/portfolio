@@ -24,7 +24,7 @@ for id, values in copy.items():
  p=next(p for p in content['projects'] if p['id']==id)
  title,category,note,brief,delivery=values
  projects.append(dict(id=id,title=title,category=category,note=note,brief=brief,delivery=delivery,image=p['image'],role=p['role'],gallery=p['gallery']))
-template=(root/'planning/visual-preview.template.html').read_text(encoding='utf-8')
+template=(root/'planning/interactive-studio.template.html').read_text(encoding='utf-8')
 html=template.replace('__DATA__',json.dumps(projects,ensure_ascii=False).replace('<','\\u003c')).replace('__ASSETS__',json.dumps(assets,ensure_ascii=False).replace('<','\\u003c'))
 target=root/'planning/studio-direction.html'
 target.write_text(html,encoding='utf-8')
